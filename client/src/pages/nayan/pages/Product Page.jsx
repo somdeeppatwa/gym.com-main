@@ -1,5 +1,5 @@
 // import wave from "../assets/wave.png";
-import banner from "../assets/img1.png";
+import banner from "../Assets/img1.png";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {

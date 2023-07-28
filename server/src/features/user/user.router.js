@@ -166,6 +166,7 @@ app.post("/signup", async (req, res) => {
         { email: email, cart: [], purchase:[] }
       )
       await user.save();
+      return res.status(201).send(`user created successfully,${username}`);
       
     
       const mailOptions = {

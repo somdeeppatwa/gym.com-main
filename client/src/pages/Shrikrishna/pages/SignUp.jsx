@@ -17,7 +17,7 @@ import {
   useToast,
   Image,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useDispatch } from "react-redux";
@@ -27,6 +27,8 @@ import { registerUser } from "../../../redux/register/register.actions";
 import gymbro from "../assets/gymBro.gif"
 
 export default function Signup() {
+
+  const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
   const toast = useToast()
@@ -70,7 +72,8 @@ export default function Signup() {
     } else {
 
       dispatch(registerUser(user));
-      setUser(defaultValues)
+      setUser(defaultValues);
+      navigate("/login");
       toast({
         title: "Your account is created",
         description: "We've created your account for you.",
