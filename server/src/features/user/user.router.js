@@ -91,28 +91,30 @@ app.post("/login", async (req, res) => {
           expiresIn: "28 days",
         }
       );
-      const mailOptions = {
-        from: process.env.EMAIL,
-        to: email,
-        subject: `Login Successfull`,
-        html: `<h1>your ACcount Login Successfull  </h1>`,
-      };
+      // const mailOptions = {
+      //   from: process.env.EMAIL,
+      //   to: email,
+      //   subject: `Login Successfull`,
+      //   html: `<h1>your ACcount Login Successfull  </h1>`,
+      // };
 
-      transporter.sendMail(mailOptions, (err, info) => {
-        if (err) {
-          console.log("ERROR", err);
-        } else {
-          console.log("EMAIL SEND" + info.response);
-          return res.status(201).send(`${role} created successfully`);
-        }
-      });
+      // transporter.sendMail(mailOptions, (err, info) => {
+      //   if (err) {
+      //     console.log("ERROR", err);
+      //   } else {
+      //     console.log("EMAIL SEND" + info.response);
+      //     return res.status(201).send(`${role} created successfully`);
+      //   }
+      // });
+      console.log(token, refresh_token, email);
       return res
         .status(200)
         .send({ message: "Login success", token, refresh_token, email });
     } else {
       return res.status(401).send({ message: "Authentication Failed" });
     }
-  } catch {
+  } catch(e) {
+    console.log(e);
     return res.status(401).send({ message: "Authentication Failed" });
   }
 });
